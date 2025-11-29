@@ -1,0 +1,4 @@
+# Static Files
+
+This directory is for custom static files (CSS, JavaScript, images).
+The `staticfiles/` directory (created by `collectstatic`) is excluded from git.
