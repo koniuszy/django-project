@@ -1,3 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
+from api.models import Snippet
+
+
+class adminSnippet(admin.ModelAdmin):
+    list_display = ("title", "language", "created")
+    search_fields = ("title", "code")
+
+
+admin.site.register(Snippet, adminSnippet)
