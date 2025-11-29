@@ -1,0 +1,45 @@
+.vscode
+
+# Byte-compiled / optimized / compiled files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.egg-info/
+.eggs/
+
+# Environments
+.env
+venv/
+env/
+# For Conda environments (if used)
+.conda/
+conda-meta/
+
+# Django-specific files
+*.log
+*.pot
+db.sqlite3
+local_settings.py # Or any other file containing sensitive local settings
+media/ # If you're storing user-uploaded media files locally and don't want to track them
+static_root/ # If you're collecting static files into a separate directory
+
+# IDE-specific files
+.idea/ # PyCharm
+.vscode/ # VS Code (unless you want to share specific workspace settings)
+*.swp # Vim swap files
+*.swo # Vim swap files
+
+# Operating System files
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# Test and coverage files
+.coverage
+.tox/
+
+# Other temporary or generated files
+*.bak
+*.tmp
+*.zip
+*.tar.gz
