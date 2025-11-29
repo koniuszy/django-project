@@ -8,6 +8,7 @@ router.register(r"snippets", views.SnippetViewSet, basename="snippet")
 router.register(r"users", views.UserViewSet, basename="user")
 
 urlpatterns = [
+    # Rest Framework API URLs
     path("", include(router.urls)),
     path("api-auth/", include("rest_framework.urls")),
 ]
