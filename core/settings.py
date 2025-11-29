@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
+    "cms",
 ]
 
 
@@ -138,6 +139,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 WAGTAIL_SITE_NAME = "My CMS in Python"
+WAGTAILADMIN_BASE_URL = "http://localhost:8000"
 WAGTAILDOCS_EXTENSIONS = [
     "csv",
     "docx",

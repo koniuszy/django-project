@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<section style="padding: 40px; max-width: 800px; margin:auto;">
+    <h1 style="font-size: 42px; margin-bottom: 10px;">
+        {{ page.title }}
+    </h1>
+
+    {% if page.intro %}
+        <p style="font-size: 18px; color:#555; line-height:1.6;">
+            {{ page.intro|richtext }}
+        </p>
+    {% endif %}
+
+    <hr style="margin:40px 0;">
+    <p style="text-align:center; color:#888;">Welcome — Your Wagtail site is now running. 🎉</p>
+</section>
+{% endblock %}
