@@ -1,0 +1,79 @@
+{% load wagtailcore_tags navigation_tags %}
+
+<header class="site-header">
+    {% get_site_root as site_root %}
+    <nav class="nav-container">
+        <div class="nav-logo">
+            <a href="{% pageurl site_root %}">MySite</a>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="{% pageurl site_root %}">Home</a></li>
+            {% for menuitem in site_root.get_children.live.in_menu %}
+                <li><a href="{% pageurl menuitem %}">{{ menuitem.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>
+
+<style>
+.site-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-family: system-ui, sans-serif;
+}
+
+/* Nav layout */
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo a {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    color: #111;
+}
+
+/* Menu items */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 1.8rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #333;
+    transition: 0.25s ease;
+}
+
+/* Hover + Modern Touch */
+.nav-menu a:hover {
+    color: #000;
+    opacity: 0.75;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+}
+
+/* Mobile collapse (optional first step) */
+@media (max-width: 700px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+</style>

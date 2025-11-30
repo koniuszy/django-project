@@ -1,0 +1,80 @@
+/**********************
+   GLOBAL DESIGN SYSTEM
+***********************/
+
+:root {
+    --max-width: 1200px;
+    --content-padding: 2rem;
+    --radius: .7rem;
+
+    /* Typography */
+    --font-main: system-ui, sans-serif;
+    --line-height: 1.6;
+
+    /* Light theme palette */
+    --bg: #fafafa;
+    --text: #111;
+    --muted: #555;
+
+    /* Accent color — you can change this one variable to reskin entire site */
+    --accent: #0066ff;
+}
+
+/**************
+    GLOBAL
+***************/
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+body.site-body {
+    margin: 0;
+    font-family: var(--font-main);
+    background: var(--bg);
+    color: var(--text);
+    line-height: var(--line-height);
+}
+
+/**************
+    MAIN
+***************/
+
+.page-wrapper {
+    max-width: var(--max-width);
+    padding: var(--content-padding);
+    margin: auto;
+    animation: fadeIn .5s ease both;
+}
+
+/* Page headings consistent style */
+.page-wrapper h1,
+.page-wrapper h2,
+.page-wrapper h3 {
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: .8rem;
+    letter-spacing: -.01em;
+}
+
+/**************
+ Animations
+***************/
+
+@keyframes fadeIn {
+    from { opacity: 0; translate: 0 10px; }
+    to { opacity: 1; translate: 0 0; }
+}
+
+/**************
+ Responsive
+***************/
+
+@media (max-width: 768px) {
+    .page-wrapper {
+        padding: 1.25rem;
+    }
+}

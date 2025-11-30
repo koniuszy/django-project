@@ -1,32 +1,117 @@
-{% load wagtailcore_tags %}  {# required for  #}
+{% load wagtailcore_tags %}
 
-<footer>
-    <p>Built with Wagtail</p>
+<footer class="site-footer">
 
-    {% with linkedin_url=settings.cms.NavigationSettings.linkedin_url github_url=settings.cms.NavigationSettings.github_url mastodon_url=settings.cms.NavigationSettings.mastodon_url %}
-        {% if linkedin_url or github_url or mastodon_url %}
-            <p>
-                Follow me on:
-                {% if github_url %}
-                    <a href="{{ github_url }}">GitHub</a>
-                {% endif %}
-                {% if linkedin_url %}
-                    <a href="{{ linkedin_url }}">LinkedIn</a>
-                {% endif %}
-                {% if mastodon_url %}
-                    <a href="{{ mastodon_url }}">Mastodon</a>
-                {% endif %}
-            </p>
-        {% endif %}
-    {% endwith %}
+    <div class="footer-top">
+        <span class="footer-brand">Built with Wagtail 🐦</span>
 
-    {% if page.footer_snippet %}
-    <div class="footer-snippet">
-        <h2>{{page.footer_snippet.title}}</h2>
-        {{ page.footer_snippet.content|richtext }}
+        {% with linkedin_url=settings.cms.NavigationSettings.linkedin_url github_url=settings.cms.NavigationSettings.github_url mastodon_url=settings.cms.NavigationSettings.mastodon_url %}
+            {% if linkedin_url or github_url or mastodon_url %}
+                <div class="footer-social">
+                    <span>Connect:</span>
+                    <div class="social-links">
+                        {% if github_url %}
+                            <a href="{{ github_url }}" target="_blank" rel="noopener">GitHub</a>
+                        {% endif %}
+                        {% if linkedin_url %}
+                            <a href="{{ linkedin_url }}" target="_blank" rel="noopener">LinkedIn</a>
+                        {% endif %}
+                        {% if mastodon_url %}
+                            <a href="{{ mastodon_url }}" target="_blank" rel="noopener">Mastodon</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
     </div>
-{% else %}
-    <!-- fallback to global NavigationSettings text -->
-    {{ settings.base.NavigationSettings.custom_text }}
-{% endif %}
+
+    <div class="footer-content">
+        {% if page.footer_snippet %}
+            <div class="footer-snippet">
+                <h3>{{ page.footer_snippet.title }}</h3>
+                <div class="richtext">{{ page.footer_snippet.content|richtext }}</div>
+            </div>
+        {% else %}
+            <div class="footer-snippet">
+                {{ settings.cms.NavigationSettings.custom_text }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="footer-bottom">
+        <small>© {{ now|date:"Y" }} — All rights reserved.</small>
+    </div>
+
 </footer>
+
+
+<style>
+.site-footer {
+    color: #202020ff;
+    padding: 3rem 2rem;
+    font-family: system-ui, sans-serif;
+    margin-top: 4rem;
+}
+
+/* Layout blocks */
+.footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1.5rem;
+}
+
+/* Footer brand */
+.footer-brand {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Social links */
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+.social-links {
+    display: flex;
+    gap: 1.2rem;
+}
+.social-links a {
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity .25s ease;
+}
+.social-links a:hover {
+    opacity: .6;
+}
+
+/* Content area */
+.footer-content {
+    margin-block: 2rem;
+    line-height: 1.7;
+}
+.footer-snippet h3 {
+    font-size: 1.2rem;
+    margin-bottom: .75rem;
+}
+
+/* Bottom copyright strip */
+.footer-bottom {
+    font-size: .85rem;
+    text-align: center;
+    opacity: .5;
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .footer-top {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
