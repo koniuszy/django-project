@@ -19,4 +19,7 @@
         {% endif %}
     {% endwith %}
 
+    {% if settings.cms.NavigationSettings.custom_text %}
+        <p>{{ settings.cms.NavigationSettings.custom_text }}</p>
+    {% endif %}
 </footer>

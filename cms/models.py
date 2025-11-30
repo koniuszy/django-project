@@ -10,6 +10,9 @@ class NavigationSettings(BaseGenericSetting):
     linkedin_url = models.URLField(verbose_name="LinkedIn URL", blank=True)
     github_url = models.URLField(verbose_name="GitHub URL", blank=True)
     mastodon_url = models.URLField(verbose_name="Mastodon URL", blank=True)
+    custom_text = models.CharField(
+        max_length=255, default="Your custom footer text here"
+    )
 
     panels = [
         MultiFieldPanel(
@@ -19,7 +22,8 @@ class NavigationSettings(BaseGenericSetting):
                 FieldPanel("mastodon_url"),
             ],
             "Social settings",
-        )
+        ),
+        FieldPanel("custom_text"),
     ]
 
 
