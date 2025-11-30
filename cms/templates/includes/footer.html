@@ -1,3 +1,4 @@
+{% load wagtailcore_tags %}  {# required for  #}
 
 <footer>
     <p>Built with Wagtail</p>
@@ -19,7 +20,13 @@
         {% endif %}
     {% endwith %}
 
-    {% if settings.cms.NavigationSettings.custom_text %}
-        <p>{{ settings.cms.NavigationSettings.custom_text }}</p>
-    {% endif %}
+    {% if page.footer_snippet %}
+    <div class="footer-snippet">
+        <h2>{{page.footer_snippet.title}}</h2>
+        {{ page.footer_snippet.content|richtext }}
+    </div>
+{% else %}
+    <!-- fallback to global NavigationSettings text -->
+    {{ settings.base.NavigationSettings.custom_text }}
+{% endif %}
 </footer>
