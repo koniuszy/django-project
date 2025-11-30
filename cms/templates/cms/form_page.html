@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-formpage{% endblock %}
+
+{% block content %}
+
+<section class="form-container">
+  <h1 class="form-title">{{ page.title }}</h1>
+  <p class="form-intro">{{ page.intro|richtext }}</p>
+
+  <form class="page-form" action="{% pageurl page %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button type="submit" class="btn-primary">Submit</button>
+  </form>
+</section>
+
+
+<style>
+/* --- Layout --- */
+.form-container {
+  max-width: 700px;
+  padding: 2.5rem 1.5rem;
+  margin: 0 auto;
+  background: #fff;
+}
+
+/* --- Typography --- */
+.form-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.6em;
+}
+
+.form-intro {
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* --- Form fields --- */
+.page-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.page-form input,
+.page-form textarea,
+.page-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1.6px solid #d1d5db;
+  font-size: 1rem;
+  transition: 0.2s border, 0.2s box-shadow;
+  margin-bottom: 1.1rem;
+}
+
+.page-form input:focus,
+.page-form textarea:focus,
+.page-form select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .25);
+  outline: none;
+}
+
+.page-form .helptext {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* --- Button styling --- */
+.btn-primary {
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: #1e48c6;
+  transform: translateY(-2px);
+}
+</style>
+
+{% endblock %}
