@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "taggit",
     "wagtail.contrib.settings",
     "cms",
+    "cms_portfolio",
 ]
 
 
