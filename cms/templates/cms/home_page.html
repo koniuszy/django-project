@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
+{% block body_class %}template-homepage{% endblock %}
+
 {% block content %}
-<section style="padding: 40px; max-width: 800px; margin:auto;">
-    <h1 style="font-size: 42px; margin-bottom: 10px;">
-        {{ page.title }}
-    </h1>
+    <div>
+        <h1>{{ page.title }}</h1>
+        {% image page.image fill-480x320 %}
+        <p>{{ page.hero_text }}</p>
+        {% if page.hero_cta_link %}
+            <a href="{% pageurl page.hero_cta_link %}">
+                {% firstof page.hero_cta page.hero_cta_link.title %}
+            </a>
+        {% endif %}
+    </div>
 
-    {% if page.intro %}
-        <p style="font-size: 18px; color:#555; line-height:1.6;">
-            {{ page.intro|richtext }}
-        </p>
-    {% endif %}
-
-    <hr style="margin:40px 0;">
-    <p style="text-align:center; color:#888;">Welcome — Your Wagtail site is now running. 🎉</p>
-</section>
-{% endblock %}
+  {{ page.body|richtext }}
+{% endblock content %}

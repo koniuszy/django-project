@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{{ page.title }}{% endblock %}</title>
-</head>
-<body style="font-family:Arial, sans-serif;">
+{% load static %}
+{% load wagtailuserbar %}
+<body class="{% block body_class %}{% endblock %}">
+    {% wagtailuserbar %}
+
     {% block content %}{% endblock %}
+
+    {# Add this to the file: #}
+    {% include "includes/footer.html" %}
+
+    {# Global javascript #}
+    <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
+
+    {% block extra_js %}
+    {# Override this in templates to add extra javascript #}
+    {% endblock %}
 </body>
-</html>
