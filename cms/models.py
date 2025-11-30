@@ -28,7 +28,7 @@ class NavigationSettings(BaseGenericSetting):
 
 
 class HomePage(Page):
-    # add the Hero section of HomePage:
+    hide_footer = models.BooleanField(default=False)
     image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
@@ -70,4 +70,5 @@ class HomePage(Page):
             heading="Hero section",
         ),
         FieldPanel("body"),
+        FieldPanel("hide_footer"),
     ]

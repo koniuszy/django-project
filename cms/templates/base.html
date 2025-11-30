@@ -5,8 +5,10 @@
 
     {% block content %}{% endblock %}
 
-    {# Add this to the file: #}
-    {% include "includes/footer.html" %}
+    
+    {% if not page.hide_footer %}
+        {% include "includes/footer.html" %}
+    {% endif %}
 
     {# Global javascript #}
     {% comment %} <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script> {% endcomment %}
